@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function viewCustomers(){
+            console.log("Start Test");
+            console.log("Start");
+            $(document).ready(function() {
+                $.ajax({
+                    type : "GET",
+                    contentType : "application/json",
+                    url : "/list",
+                    data : {},
+                    dataType : 'json',
+                    cache : false,
+                    timeout : 600000,
+                    success : function(data) {
+                        console.log("GoHome");
+                        console.log(data);
+                        $.each(data.data, function (index) {
+                            let printString = '<tr><td>' + data.data[index].id + '</td>' +
+                                '<td>' + data.data[index].fname + '</td>' +
+                                '<td>' + data.data[index].lname + '</td>' +
+                                '<td>' + data.data[index].address + '</td>' +
+                                '<td>' + data.data[index].contactNo + '</td>' +
+                                '<td>' + data.data[index].totalTrans + '</td></tr>';
+                            $('#viewCustomerTable tr:last').after(printString);
+
+                        });
+                    },
+                    error : function(e) {
+                        alert(e);
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="viewCustomers()">
+<div class="side-menu">
+    <br/>
+    <div class="brand-name">
+        <img src="coop.png"/>
+
+    </div>
+    <br/>
+    <ul>
+        <li><span> </span></li>
+        <li><span> </span></li>
+        <li><img src="cus.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>Customers</span></li>
+        <li><img src="delivery.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Deliverers</span></li>
+        <li><img src="product.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Products</span></li>
+        <li><img src="his.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>History</span></li>
+        <li><img src="report.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Reports</span></li>
+        <li><img src="logout.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>LogOut</span></li>
+
+    </ul>
+</div>
+<div class="container">
+    <div class="header">
+        <div class="nav">
+            <div class="search">
+                <input type="text" placeholder="Search..">
+                <button type="submit"><img src="search.png" alt=""></button>
+            </div>
+            <div class="user">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="cards">
+            <div class="card" style="background:#CE2F15">
+                <div class="box">
+                    <h1>22</h1>
+                    <h3>Pending..</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="pending.png" alt="" style="height:50px; weidth:50px">
+                </div>
+            </div>
+            <div class="card" style="background:#E6F40C">
+                <div class="box">
+                    <h1>15</h1>
+                    <h3>Delivering..</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="deliver.png" alt="" style="height:50px; weidth:50px">
+                </div>
+            </div>
+            <div class="card" style="background:#1DF40C">
+                <div class="box">
+                    <h1>10</h1>
+                    <h3>Completed</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="completed.png" alt="" style="height:50px; weidth:50px">
+                </div>
+            </div>
+            <div class="card" style="background:#EDEEEE">
+                <div class="box">
+                    <h1>Rs: 25500</h1>
+                    <h3>Total Revenue</h3>
+                </div>
+                <div class="icon-case">
+                    <img src="rev.png" alt="" style="height:50px; weidth:50px">
+                </div>
+            </div>
+        </div>
+        <div class="content-2">
+            <div class="recent-payments">
+                <div class="title">
+                    <h2>Registered Customers</h2>
+
+                </div>
+                <table id="viewCustomerTable">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Contact No</th>
+                        <th>Total Trans</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <%--<tr>
+                    <td>1</td>
+                    <td>Yasitha</td>
+                    <td>Dilshan</td>
+                    <td>182/A, Watinapaha, Veyangoda</td>
+                    <td>0112289765</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
+
+                </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Hashan</td>
+                        <td>Madusanka</td>
+                        <td>18/A, Develapola, Veyangoda</td>
+                        <td>0112289905</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hasitha</td>
+                        <td>Karunathilake</td>
+                        <td>185/B, Kamaragoda, Minuwangoda</td>
+                        <td>0112469765</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Pasindu</td>
+                        <td>Dushan</td>
+                        <td>182/A, Yakahatuwa, Minuwangoda</td>
+                        <td>0118889765</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Malani</td>
+                        <td>Perera</td>
+                        <td>192/A, Waagowwa, Minuwangoda</td>
+                        <td>0112209365</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
+                    </tr>--%>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
