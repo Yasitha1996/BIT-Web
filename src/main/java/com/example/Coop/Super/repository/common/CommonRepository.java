@@ -22,7 +22,7 @@ public class CommonRepository {
         String response = "";
         try {
             con = DBConnection.getConnection();
-            ps = con.prepareStatement("SELECT COUNT(*) AS 'packingCount' FROM test_db.order WHERE status = '0'");
+            ps = con.prepareStatement("SELECT COUNT(*) AS 'packingCount' FROM test_db.order_p WHERE status = '0'");
             rs = ps.executeQuery();
             while (rs.next()) {
                response = String.valueOf(rs.getInt("packingCount"));
@@ -41,7 +41,7 @@ public class CommonRepository {
         String response = "";
         try {
             con = DBConnection.getConnection();
-            ps = con.prepareStatement("SELECT COUNT(*) AS 'deliveringCount' FROM test_db.order WHERE status ='2'");
+            ps = con.prepareStatement("SELECT COUNT(*) AS 'deliveringCount' FROM test_db.order_p WHERE status ='2'");
             rs = ps.executeQuery();
             while (rs.next()) {
               response = String.valueOf(rs.getInt("deliveringCount"));
@@ -60,7 +60,7 @@ public class CommonRepository {
         String response = "";
         try {
             con = DBConnection.getConnection();
-            ps = con.prepareStatement("SELECT COUNT(*) AS 'completedCount' FROM test_db.order WHERE status ='3'");
+            ps = con.prepareStatement("SELECT COUNT(*) AS 'completedCount' FROM test_db.order_p WHERE status ='3'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 response = String.valueOf(rs.getInt("completedCount"));
@@ -79,7 +79,7 @@ public class CommonRepository {
         String response = "";
         try {
             con = DBConnection.getConnection();
-            ps = con.prepareStatement("SELECT SUM(total) AS 'totalRevenue' FROM test_db.order WHERE status ='3'");
+            ps = con.prepareStatement("SELECT SUM(total) AS 'totalRevenue' FROM test_db.order_p WHERE status ='3'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 response = String.valueOf(rs.getInt("totalRevenue"));
