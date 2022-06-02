@@ -17,22 +17,40 @@ import java.util.TreeMap;
 public class ProductValidator {
     private final Log logger = LogFactory.getLog(getClass());
 
-    public String getValidateResult(ProductInputBean productInputBean) {
+    public String getValidateResult(ProductInputBean productInputBean, String requestType) {
         String msg = "";
         try {
-            if (productInputBean.getProduct_name() == null || productInputBean.getProduct_name().isEmpty()) {
-                msg = "Product name cannot be empty.";
-            } else if (productInputBean.getCategory()==null || productInputBean.getCategory().isEmpty()) {
-                msg = "Product category cannot be empty";
-            }else if (productInputBean.getUnit_qty()==null || productInputBean.getUnit_qty().isEmpty()) {
-                msg = "Unit quantity cannot be empty";
-            }else if (productInputBean.getUnit_price()==null || productInputBean.getUnit_price().isEmpty()) {
-                msg = "Unit price cannot be empty";
-            }else if (productInputBean.getDescription()==null || productInputBean.getDescription().isEmpty()) {
-                msg = "Product description cannot be empty";
-            }else if (productInputBean.getProduct_img()==null || productInputBean.getProduct_img().isEmpty()) {
-                msg = "Product image cannot be empty";
+
+            if(requestType.equals("add")) {
+                if (productInputBean.getProduct_name() == null || productInputBean.getProduct_name().isEmpty()) {
+                    msg = "Product name cannot be empty.";
+                } else if (productInputBean.getCategory()==null || productInputBean.getCategory().isEmpty()) {
+                    msg = "Product category cannot be empty";
+                }else if (productInputBean.getAvailable_stock()==null || productInputBean.getAvailable_stock().isEmpty()) {
+                    msg = "Available Stock cannot be empty";
+                }else if (productInputBean.getUnit_qty()==null || productInputBean.getUnit_qty().isEmpty()) {
+                    msg = "Unit quantity cannot be empty";
+                }else if (productInputBean.getUnit_price()==null || productInputBean.getUnit_price().isEmpty()) {
+                    msg = "Unit price cannot be empty";
+                }else if (productInputBean.getDescription()==null || productInputBean.getDescription().isEmpty()) {
+                    msg = "Product description cannot be empty";
+                }else if (productInputBean.getProduct_img()==null || productInputBean.getProduct_img().isEmpty()) {
+                    msg = "Product image cannot be empty";
+                }
+            } else if (requestType.equals("update")) {
+                if (productInputBean.getProduct_name() == null || productInputBean.getProduct_name().isEmpty()) {
+                    msg = "Product name cannot be empty.";
+                }else if (productInputBean.getUnit_qty()==null || productInputBean.getUnit_qty().isEmpty()) {
+                    msg = "Unit quantity cannot be empty";
+                }else if (productInputBean.getUnit_price()==null || productInputBean.getUnit_price().isEmpty()) {
+                    msg = "Unit price cannot be empty";
+                }else if (productInputBean.getDescription()==null || productInputBean.getDescription().isEmpty()) {
+                    msg = "Product description cannot be empty";
+                }else if (productInputBean.getAvailable_stock()==null || productInputBean.getAvailable_stock().isEmpty()) {
+                    msg = "Available Stock cannot be empty";
+                }
             }
+
         }catch (Exception e){
             System.out.println(e);
         }

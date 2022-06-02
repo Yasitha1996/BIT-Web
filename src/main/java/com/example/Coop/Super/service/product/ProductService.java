@@ -56,4 +56,40 @@ public class ProductService {
         }
         return valueDecoded;
     }
+
+    public String deleteProduct(String productId) throws Exception {
+        String message = "";
+        try {
+
+            message = productRepository.deleteProduct(productId);
+
+        } catch (Exception e) {
+            message = "Error occurred";
+            System.out.println(e);
+        }
+        return message;
+    }
+
+    public String updateProduct(ProductInputBean productInputBean){
+        String msg = "";
+        try {
+            msg = productRepository.updateProduct(productInputBean);
+
+        }catch (Exception e){
+            System.out.println("Exception :"+e);
+            msg = "Error occurred in service exception";
+        }
+        return msg;
+    }
+
+    public ProductDataMapping getProduct(String productId) throws Exception {
+        ProductDataMapping dataMapping;
+        try {
+            dataMapping = productRepository.getProduct(productId.trim());
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return dataMapping;
+    }
 }

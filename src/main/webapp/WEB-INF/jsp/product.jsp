@@ -36,13 +36,30 @@
                     success : function(data) {
                         console.log("GoHome");
                         console.log(data);
+
+                        // Clear table data before load
+                        var tBodyRef = document.getElementById('viewCustomerTable');
+                        while (tBodyRef.rows.length > 1) {
+                            tBodyRef.deleteRow(1);
+                        }
+                        tBodyRef.createTBody();
+
+                        // Load table data
                         $.each(data.data, function (index) {
                             let printString = '<tr><td>' + data.data[index].product_id + '</td>' +
                                 '<td>' + data.data[index].product_name + '</td>' +
                                 '<td>' + data.data[index].description + '</td>' +
                                 '<td>' + data.data[index].unit_qty + '</td>' +
                                 '<td>' + data.data[index].unit_price + '</td>' +
-                                '<td>' + data.data[index].available_stock + '</td></tr>';
+                                '<td>' + data.data[index].available_stock + '</td>' +
+                                '<td>' + '<button id="editBtn" class="min-w-36 btn btn-default btn-sm mr-2" title="Edit" onClick="editProduct(\'' +
+                                data.data[index].product_id +
+                                '\')">' +
+                                '<img src="../images/edit.png" style="height:25px; weidth:25px" alt=""></button>' + '</td>' +
+                                '<td>' + '<button id="deleteBtn" class="min-w-36 btn btn-default btn-sm mr-2" title="Delete" onClick="deleteProduct(\'' +
+                                data.data[index].product_id +
+                                '\')">' +
+                                '<img src="../images/delete.jpg" style="height:25px; weidth:25px" alt=""></button>' + '</td></tr>';
                             $('#viewCustomerTable tr:last').after(printString);
 
                         });
@@ -51,6 +68,39 @@
                         alert(e);
                     }
                 });
+            });
+        }
+
+        function editProduct(productId){
+            $.ajax({
+                url: "/getProduct",
+                data: {
+                    productId: productId
+                },
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json",
+
+                success: function (data) {
+                    $('#responseMsgUpdate').hide();
+
+                    $('#editProductId').val(productId);
+
+                    $('#editProductName').val(data.product_name);
+                    $('#editUnitQty').val(data.unit_qty);
+                    $('#editUnitPrice').val(data.unit_price);
+                    $('#editAailableStock').val(data.available_stock);
+                    $('#editDesription').val(data.description);
+
+
+                    $('#modalEditProduct').modal('toggle');
+                    $('#modalEditProduct').modal('show');
+
+                },
+                error: function (data) {
+                    console.log(data);
+                    <%--window.location = "${pageContext.request.contextPath}/logout.htm";--%>
+                }
             });
         }
 
@@ -83,6 +133,41 @@
         function openAddProductModel() {
             $('#modalAddProduct').modal('toggle');
             $('#modalAddProduct').modal('show');
+        }
+
+        function deleteProduct(keyVal) {
+            console.log("key val: " + keyVal);
+            $('#deleteCodeCommon').val(keyVal);
+            $('#modalDeleteCommon').modal('toggle');
+            $('#modalDeleteCommon').modal('show');
+        }
+
+        function deleteCommon(){
+            // alert("Delete" + productID);
+            console.log($('#deleteCodeCommon').val());
+
+            $.ajax({
+                type: 'POST',
+                url: '/deleteProduct',
+                data: {productId: $('#deleteCodeCommon').val()},
+                success: function (res) {
+
+                    //close delete modal
+                    $('#modalDeleteCommon').modal('toggle');
+
+                    if (res.flag) { //success
+                        toastr.success(res.successMessage);
+                        viewProduct();
+                        getStatusCount();
+                    } else {
+                        //Set error messages
+                        toastr.error(res.errorMessage);
+                    }
+                },
+                error: function (jqXHR) {
+
+                }
+            });
         }
 
     </script>
@@ -186,58 +271,15 @@
                         <th>Address</th>
                         <th>Contact No</th>
                         <th>Total Trans</th>
+                        <th>Edit</th>
                         <th>Delete</th>
+
                     </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
-                    <%--<tr>
-                        <td>1</td>
-                        <td>Yasitha</td>
-                        <td>Dilshan</td>
-                        <td>182/A, Watinapaha, Veyangoda</td>
-                        <td>0112289765</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
 
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Hashan</td>
-                        <td>Madusanka</td>
-                        <td>18/A, Develapola, Veyangoda</td>
-                        <td>0112289905</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Hasitha</td>
-                        <td>Karunathilake</td>
-                        <td>185/B, Kamaragoda, Minuwangoda</td>
-                        <td>0112469765</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Pasindu</td>
-                        <td>Dushan</td>
-                        <td>182/A, Yakahatuwa, Minuwangoda</td>
-                        <td>0118889765</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Malani</td>
-                        <td>Perera</td>
-                        <td>192/A, Waagowwa, Minuwangoda</td>
-                        <td>0112209365</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<img src="dlt.jpg" style="height:25px; weidth:25px"></td>
-                    </tr>--%>
 
                 </table>
             </div>
@@ -248,5 +290,7 @@
 </body>
 
 <jsp:include page="add-product.jsp"/>
+<jsp:include page="deleteCommon.jsp"/>
+<jsp:include page="edit-product.jsp"/>
 
 </html>
