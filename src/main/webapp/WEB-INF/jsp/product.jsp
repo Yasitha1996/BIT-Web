@@ -38,7 +38,7 @@
                         console.log(data);
 
                         // Clear table data before load
-                        var tBodyRef = document.getElementById('viewCustomerTable');
+                        var tBodyRef = document.getElementById('viewProductTable');
                         while (tBodyRef.rows.length > 1) {
                             tBodyRef.deleteRow(1);
                         }
@@ -60,7 +60,7 @@
                                 data.data[index].product_id +
                                 '\')">' +
                                 '<img src="../images/delete.jpg" style="height:25px; weidth:25px" alt=""></button>' + '</td></tr>';
-                            $('#viewCustomerTable tr:last').after(printString);
+                            $('#viewProductTable tr:last').after(printString);
 
                         });
                     },
@@ -183,9 +183,9 @@
     <ul>
         <li><span> </span></li>
         <li><span> </span></li>
-        <li><img src="../images/cus.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>Customers</span></li>
-        <li><img src="../images/delivery.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Deliverers</span></li>
-        <li><img src="../images/product.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Products</span></li>
+        <li onclick="window.location.href='customer'"><img src="../images/cus.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>Customers</span></li>
+        <li onclick="window.location.href='deliverer'"><img src="../images/delivery.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Deliverers</span></li>
+        <li onclick="window.location.href='product'"><img src="../images/product.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Products</span></li>
         <li><img src="../images/his.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>History</span></li>
         <li><img src="../images/report.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Reports</span></li>
         <li><img src="../images/logout.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>LogOut</span></li>
@@ -262,15 +262,15 @@
                     <h2>Registered Customers</h2>
 
                 </div>
-                <table id="viewCustomerTable">
+                <table id="viewProductTable">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Address</th>
-                        <th>Contact No</th>
-                        <th>Total Trans</th>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Unit Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Available Stock</th>
                         <th>Edit</th>
                         <th>Delete</th>
 

@@ -17,7 +17,7 @@ public class ProductDataMapping {
     private int category;
     private String description;
     private String unit_qty;
-    private String unit_price;
+    private double unit_price;
     private String available_stock;
     private byte[] product_img;
 }

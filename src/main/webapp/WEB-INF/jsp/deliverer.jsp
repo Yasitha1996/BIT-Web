@@ -93,9 +93,9 @@
     <ul>
         <li><span> </span></li>
         <li><span> </span></li>
-        <li><img src="../images/cus.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>Customers</span></li>
-        <li><img src="../images/delivery.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Deliverers</span></li>
-        <li><img src="../images/product.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Products</span></li>
+        <li onclick="window.location.href='customer'"><img src="../images/cus.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>Customers</span></li>
+        <li onclick="window.location.href='deliverer'"><img src="../images/delivery.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Deliverers</span></li>
+        <li onclick="window.location.href='product'"><img src="../images/product.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Products</span></li>
         <li><img src="../images/his.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>History</span></li>
         <li><img src="../images/report.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp;<span>Reports</span></li>
         <li><img src="../images/logout.png" alt="" style="height:40px; weidth:40px">&nbsp;&nbsp; <span>LogOut</span></li>
@@ -166,9 +166,9 @@
                         <th>ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Address</th>
+                        <th>License No</th>
                         <th>Contact No</th>
-                        <th>Total Trans</th>
+                        <th>Jobs Completed</th>
                         <th>Delete</th>
                     </tr>
                     </thead>

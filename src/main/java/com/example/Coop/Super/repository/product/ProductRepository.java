@@ -3,6 +3,7 @@ package com.example.Coop.Super.repository.product;
 import com.example.Coop.Super.bean.mapping.ProductDataMapping;
 import com.example.Coop.Super.bean.product.ProductDataBean;
 import com.example.Coop.Super.bean.product.ProductInputBean;
+import com.example.Coop.Super.bean.reports.SalesReportBean;
 import com.example.Coop.Super.common.DataTableResponse;
 import com.example.Coop.Super.db.DBConnection;
 import org.springframework.context.annotation.Scope;
@@ -12,12 +13,13 @@ import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 @Repository
 @Scope("prototype")
 public class ProductRepository {
 
-    public DataTableResponse<ProductDataBean> getProductList(){
+    public DataTableResponse<ProductDataBean> getProductList() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -26,7 +28,7 @@ public class ProductRepository {
             con = DBConnection.getConnection();
             ps = con.prepareStatement("SELECT * FROM product");
             rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 ProductDataBean dataBean = new ProductDataBean();
                 dataBean.setProduct_id(rs.getString("product_id"));
                 dataBean.setProduct_name(rs.getString("product_name"));
@@ -36,13 +38,13 @@ public class ProductRepository {
                 dataBean.setAvailable_stock(rs.getString("available_stock"));
                 response.data.add(dataBean);
             }
-        }catch (Exception e){
-            System.out.println("Product Exception:"+e);
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
         }
         return response;
     }
 
-    public String addProduct(ProductDataMapping productDataMapping){
+    public String addProduct(ProductDataMapping productDataMapping) {
         String msg = "Error";
         Connection con = null;
         PreparedStatement ps = null;
@@ -56,7 +58,7 @@ public class ProductRepository {
             ps.setString(2, productDataMapping.getDescription());
             ps.setBytes(3, productDataMapping.getProduct_img());
             ps.setString(4, productDataMapping.getProduct_name());
-            ps.setString(5, productDataMapping.getUnit_price());
+            ps.setDouble(5, productDataMapping.getUnit_price());
             ps.setString(6, productDataMapping.getUnit_qty());
             ps.setInt(7, productDataMapping.getCategory());
 
@@ -66,14 +68,14 @@ public class ProductRepository {
                 msg = "";
             }
 
-        } catch (Exception e){
-            System.out.println("Product Exception:"+e);
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
             msg = "Failed to add product";
         }
         return msg;
     }
 
-    public String deleteProduct(String productId){
+    public String deleteProduct(String productId) {
         String msg = "Error";
         Connection con = null;
         PreparedStatement ps = null;
@@ -91,14 +93,14 @@ public class ProductRepository {
                 msg = "";
             }
 
-        } catch (Exception e){
-            System.out.println("Product Exception:"+e);
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
             msg = "Failed to delete product";
         }
         return msg;
     }
 
-    public String updateProduct(ProductInputBean productInputBean){
+    public String updateProduct(ProductInputBean productInputBean) {
         String msg = "Error";
         Connection con = null;
         PreparedStatement ps = null;
@@ -110,7 +112,7 @@ public class ProductRepository {
 
             ps.setString(1, productInputBean.getAvailable_stock());
             ps.setString(2, productInputBean.getProduct_name());
-            ps.setString(3, productInputBean.getUnit_price());
+            ps.setDouble(3, Double.parseDouble(productInputBean.getUnit_price()));
             ps.setString(4, productInputBean.getUnit_qty());
             ps.setString(5, productInputBean.getDescription());
             ps.setInt(6, Integer.parseInt(productInputBean.getProduct_id()));
@@ -121,14 +123,14 @@ public class ProductRepository {
                 msg = "";
             }
 
-        } catch (Exception e){
-            System.out.println("Product Exception:"+e);
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
             msg = "Failed to update product";
         }
         return msg;
     }
 
-    public ProductDataMapping getProduct(String productId){
+    public ProductDataMapping getProduct(String productId) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -140,18 +142,44 @@ public class ProductRepository {
             ps.setInt(1, Integer.parseInt(productId));
 
             rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 response.setProduct_id(Integer.parseInt(rs.getString("product_id")));
                 response.setProduct_name(rs.getString("product_name"));
                 response.setDescription(rs.getString("description"));
-                response.setUnit_price(rs.getString("unit_price"));
+                response.setUnit_price(Double.parseDouble(rs.getString("unit_price")));
                 response.setUnit_qty(rs.getString("unit_qty"));
                 response.setAvailable_stock(rs.getString("available_stock"));
             }
-        }catch (Exception e){
-            System.out.println("Product Exception:"+e);
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
         }
         System.out.println("Repo Response: " + response);
         return response;
+    }
+
+    public List<SalesReportBean> getProductByCategory(Integer category) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        SalesReportBean salesReportBean = new SalesReportBean();
+        try {
+            con = DBConnection.getConnection();
+            ps = con.prepareStatement("SELECT * FROM product WHERE category=?");
+
+            //ps.setInt(1, Integer.parseInt(productId));
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                salesReportBean.setProduct_id((rs.getString("product_id")));
+                salesReportBean.setProduct_name(rs.getString("product_name"));
+                salesReportBean.setUnit_price(rs.getDouble("unit_price"));
+                salesReportBean.setAvailable_stock(rs.getString("available_stock"));
+            }
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
+        }
+
+        System.out.println("Repo Response: " + salesReportBean);
+        return (List<SalesReportBean>) salesReportBean;
     }
 }
