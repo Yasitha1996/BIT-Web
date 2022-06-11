@@ -259,7 +259,7 @@
         <div class="content-2">
             <div class="recent-payments">
                 <div class="title">
-                    <h2>Registered Customers</h2>
+                    <h2>Registered Products</h2>
 
                 </div>
                 <table id="viewProductTable">

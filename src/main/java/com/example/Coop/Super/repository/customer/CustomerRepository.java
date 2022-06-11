@@ -39,4 +39,29 @@ public class CustomerRepository {
      return response;
  }
 
+    public String deleteCustomer(String id) {
+        String msg = "Error";
+        Connection con = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+
+        try {
+            con = DBConnection.getConnection();
+            ps = con.prepareStatement("DELETE FROM customer WHERE id =?");
+
+            ps.setString(1, id);
+
+            rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                msg = "";
+            }
+
+        } catch (Exception e) {
+            System.out.println("Product Exception:" + e);
+            msg = "Failed to delete product";
+        }
+        return msg;
+    }
+
 }

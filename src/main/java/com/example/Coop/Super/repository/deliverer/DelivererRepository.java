@@ -38,4 +38,29 @@ public class DelivererRepository {
         }
         return response;
     }
+
+    public String deleteDeliverer(String del_id) {
+        String msg = "Error";
+        Connection con = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+
+        try {
+            con = DBConnection.getConnection();
+            ps = con.prepareStatement("DELETE FROM deliverer WHERE del_id =?");
+
+            ps.setString(1, del_id);
+
+            rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                msg = "";
+            }
+
+        } catch (Exception e) {
+            System.out.println("Deliverer Exception:" + e);
+            msg = "Failed to delete deliverer";
+        }
+        return msg;
+    }
 }

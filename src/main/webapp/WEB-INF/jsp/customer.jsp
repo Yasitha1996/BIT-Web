@@ -13,11 +13,12 @@
 <html>
 <head>
     <link rel="stylesheet" href ="../css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
     <script type="text/javascript">
 
         function viewCustomers(){
@@ -35,14 +36,26 @@
                   //  timeout : 600000,
                     success : function(data) {
                         console.log("GoHome");
-                        // console.log(data);
+
+                        // Clear table data before load
+                        var tBodyRef = document.getElementById('viewCustomerTable');
+                        while (tBodyRef.rows.length > 1) {
+                            tBodyRef.deleteRow(1);
+                        }
+                        tBodyRef.createTBody();
+
+                        // Load table data
                         $.each(data.data, function (index) {
                             let printString = '<tr><td>' + data.data[index].id + '</td>' +
                                 '<td>' + data.data[index].fname + '</td>' +
                                 '<td>' + data.data[index].lname + '</td>' +
                                 '<td>' + data.data[index].address + '</td>' +
                                 '<td>' + data.data[index].contactNo + '</td>' +
-                                '<td>' + data.data[index].totalTrans + '</td></tr>';
+                                '<td>' + data.data[index].totalTrans + '</td>'+
+                                '<td>' + '<button id="deleteBtn" class="min-w-36 btn btn-default btn-sm mr-2" title="Delete" onClick="deleteCustomer(\'' +
+                                data.data[index].id +
+                                '\')">' +
+                                '<img src="../images/delete.jpg" style="height:25px; weidth:25px" alt=""></button>' + '</td></tr>';
                             $('#viewCustomerTable tr:last').after(printString);
 
                         });
@@ -77,6 +90,41 @@
                         console.log("Error: " + e);
                     }
                 });
+            });
+        }
+
+        function deleteCustomer(keyVal) {
+            console.log("key val: " + keyVal);
+            $('#deleteCodeCommon').val(keyVal);
+            $('#modalDeleteCommon').modal('toggle');
+            $('#modalDeleteCommon').modal('show');
+        }
+
+        function deleteCommon(){
+
+            console.log($('#deleteCodeCommon').val());
+
+            $.ajax({
+                type: 'POST',
+                url: '/deleteCustomer',
+                data: {id: $('#deleteCodeCommon').val()},
+                success: function (res) {
+
+                    //close delete modal
+                    $('#modalDeleteCommon').modal('toggle');
+
+                    if (res.flag) { //success
+                        toastr.success(res.successMessage);
+                        viewCustomers();
+                        getStatusCount();
+                    } else {
+                        //Set error messages
+                        toastr.error(res.errorMessage);
+                    }
+                },
+                error: function (jqXHR) {
+
+                }
             });
         }
 
@@ -229,4 +277,7 @@
     </div>
 </div>
 </body>
+
+<jsp:include page="deleteCommon.jsp"/>
+
 </html>
