@@ -15,7 +15,6 @@ public class SalesReportBean {
     private String available_stock;
     private double unit_price;
     private double totalRevenue;
-    private double netRevenue;
 
 
 }

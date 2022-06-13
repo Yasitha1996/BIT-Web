@@ -1,8 +1,10 @@
 package com.example.Coop.Super.controller.reports;
 
 import com.example.Coop.Super.bean.reports.SalesReportBean;
+import com.example.Coop.Super.service.reports.SalesReportService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,11 +20,23 @@ import java.util.Map;
 @RestController
 public class SalesReportController {
 
-    @RequestMapping(value = "/sales", method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<byte[]> sales(){
+    @Autowired
+    SalesReportService salesReportService;
+
+    @RequestMapping(value = "/sales", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<byte[]> sales(String category){
+
         System.out.println("Test Report");
-        try{
+        ResponseEntity<byte[]> salesData = null;
+        try {
+           salesData  = salesReportService.getSalesData(category);
+
+        } catch (Exception e){
+            System.out.println("Exception  :  " + e);
+        }
+        return salesData;
+
+        /*try{
             System.out.println("st1");
 
             List<SalesReportBean> salesList = null;
@@ -50,6 +64,6 @@ public class SalesReportController {
     } catch(Exception e) {
             System.out.println(e);
         return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    }*/
     }
 }
