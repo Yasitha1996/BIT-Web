@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2f1ca52-4ba4-4dae-9525-1c78bbee6b35">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="5208dc47-db79-4066-8eb9-f2facd5a75f2"/>
+	<subDataset name="Table Dataset 2" uuid="f6f67c7a-c280-4f93-bfb8-8090e620a20c"/>
+	<subDataset name="Table Dataset 3" uuid="028a152c-0655-4ee0-b9d2-e110f67b456b"/>
+	<subDataset name="Table Dataset 4" uuid="b5439470-1ddb-4a7b-a867-099dbcb28dbf"/>
+	<subDataset name="Table Dataset 5" uuid="fb46dfb5-0282-41bd-9ccb-d817770ffacf"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="time" class="java.lang.String"/>
+	<parameter name="netRevenue" class="java.lang.Double"/>
+	<parameter name="category" class="java.lang.String"/>
+	<parameter name="nRev" class="java.lang.String"/>
+	<parameter name="par1" class="java.lang.Number"/>
+	<field name="product_id" class="java.lang.String"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="available_stock" class="java.lang.String"/>
+	<field name="sales_qty" class="java.lang.String"/>
+	<field name="unit_price" class="java.lang.Double"/>
+	<field name="totalRevenue" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="203" y="27" width="128" height="52" uuid="b2bc1570-b326-4012-97f8-6f198a70f7e1"/>
+				<imageExpression><![CDATA["E:\\BIT\\img\\coop logo1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement x="203" y="0" width="153" height="35" uuid="d3048c2c-3484-4ef9-884c-b4426b7f4a29"/>
+				<text><![CDATA[Contact Info: 0015637404
+5W9X+V94, Minuwangoda
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="35" width="27" height="20" uuid="a8278f0f-c835-48ab-abd2-f185c08fe60d"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="35" width="37" height="20" uuid="2638caca-4649-4e1a-9838-638be71495d9"/>
+				<text><![CDATA[|  Time:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="196" y="35" width="74" height="20" uuid="c06e5cff-62ae-4c5f-901a-6f3136c514a8"/>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="35" width="74" height="20" uuid="9abdfc1d-a95d-403e-8683-902ceaf5dfea"/>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="94" width="44" height="20" uuid="dc8505e6-f8d3-42a0-9236-2c530597beab"/>
+				<text><![CDATA[Category:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="49" y="94" width="100" height="20" uuid="38e89e2f-8fbe-489d-aed8-7a9c98e63899"/>
+				<textFieldExpression><![CDATA[$P{category}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="73" height="23" uuid="4b646a9f-5b6e-46b7-8e4b-994f5a69aee4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[P.ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="203" y="0" width="93" height="23" uuid="1882b789-b441-4ec5-8be6-5fcaa9d924b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Available Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="73" y="0" width="130" height="23" uuid="fc6e31e7-f1cd-47be-833c-aa87b95c9e01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="296" y="0" width="83" height="23" uuid="575604a0-5c9c-45d9-900e-a6361b22b676"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Sale Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="379" y="0" width="94" height="23" uuid="5a8f7d11-4c38-4e2c-ab6f-652a552cf8da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="473" y="0" width="82" height="23" uuid="acd5c3e8-457f-4151-91f7-8a772274d959"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total Revenue]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="554" height="63" uuid="5d1c7e77-6377-4cea-8fdc-8375f108140c"/>
+			</rectangle>
+			<elementGroup/>
+			<elementGroup/>
+			<rectangle>
+				<reportElement style="table" x="74" y="7" width="129" height="20" uuid="93632781-ddd3-41cc-8e0f-39caf6d14182"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="table" x="203" y="7" width="93" height="20" uuid="85987b8c-d3d0-4b10-ba6c-400ac994495d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="table" x="296" y="7" width="83" height="20" uuid="78dee606-24ef-4282-83cf-a7d95aef91a8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="table" x="379" y="7" width="94" height="20" uuid="9bfc633f-e37d-4dea-916d-35ac6789570d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="table" x="473" y="7" width="82" height="20" uuid="24aa2c95-6671-47e0-bd3d-d1c0cba38b8f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="table" x="0" y="7" width="73" height="20" uuid="a22feefc-4a88-4670-9b31-af4e8e9b8328"/>
+			</rectangle>
+			<textField>
+				<reportElement x="11" y="7" width="62" height="20" uuid="d3e38262-d868-4f2d-b768-b0967aab8779"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{product_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="7" width="117" height="20" uuid="aa4c9120-1a17-44ba-bc64-9f7f58947837"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="7" width="84" height="20" uuid="2e004ad6-9bcc-4704-8f8d-5e90f43cc36e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{available_stock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="7" width="72" height="20" uuid="3e8311ad-ce8a-419b-8022-ec950af23ac5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sales_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="7" width="83" height="20" uuid="95e5aab8-3f25-4801-8749-0354276bdfcb"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="7" width="72" height="20" uuid="ca4ccfd0-e2b2-42a2-a0b4-de30a7f54d2a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalRevenue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="44" width="72" height="20" uuid="97468e58-76dd-4e43-a4ed-5fb47be6cbb7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{netRevenue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="45" width="463" height="20" uuid="c309ea8f-d25d-499f-b5ad-3ef7f2e83923"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ Net Revenue (Rs/=)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="1" y="43" width="473" height="20" uuid="a671133c-2fb6-4f79-9730-56f98e5d9b80"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="474" y="43" width="82" height="20" uuid="b820b675-d864-4a56-95af-4799d31939c9"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Immediate"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
