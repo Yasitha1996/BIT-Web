@@ -15,7 +15,6 @@ import java.util.TreeMap;
 
 @Component
 public class ProductValidator {
-    private final Log logger = LogFactory.getLog(getClass());
 
     public String getValidateResult(ProductInputBean productInputBean, String requestType) {
         String msg = "";

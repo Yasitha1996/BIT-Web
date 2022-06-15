@@ -29,8 +29,8 @@ public class DelivererRepository {
                 dataBean.setDel_id(rs.getString("del_id"));
                 dataBean.setFirstname(rs.getString("firstname"));
                 dataBean.setLastname(rs.getString("lastname"));
-                dataBean.setLicenseNo(rs.getString("licenseNo"));
-                dataBean.setContactNo(rs.getString("contactNo"));
+                dataBean.setLicenseNo(rs.getString("license_no"));
+                dataBean.setContactNo(rs.getString("contact"));
                 response.data.add(dataBean);
             }
         } catch (Exception e) {

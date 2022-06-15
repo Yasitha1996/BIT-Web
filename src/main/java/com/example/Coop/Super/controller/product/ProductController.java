@@ -52,6 +52,7 @@ public class ProductController {
 
     @GetMapping("/product")
     public ModelAndView viewHomePage(@ModelAttribute("product") ProductInputBean productInputBean, ModelMap modelMap, Locale locale) {
+        System.out.println("VIEW PRODUCT PAGE");
 //        ModelAndView model = new ModelAndView("product");
 //        return model;
         return new ModelAndView("product", new ModelMap());

@@ -84,7 +84,7 @@ public class ProductService {
         return msg;
     }
 
-    public ProductDataMapping getProduct(String productId) throws Exception {
+    public ProductDataMapping getProduct(String productId) {
         ProductDataMapping dataMapping;
         try {
             dataMapping = productRepository.getProduct(productId.trim());
